@@ -73,6 +73,10 @@ contract NFTTicket is ERC721, Ownable {
         _mintTickets(_receiver, _tier, _quantity);
     }
 
+    function withdraw() external onlyOwner {
+        payable(owner()).transfer(address(this).balance);
+    }
+
     function _mintTickets(
         address _receiver,
         uint256 _tierIdentifier,
