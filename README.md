@@ -1,13 +1,14 @@
-# Sample Hardhat Project
+## Setup hardhat
+```sh
+npx hardhat
+```
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Install necessry dependencies
+```sh
+npm i --save-dev dotenv hardhat-deploy @nomiclabs/hardhat-ethers@npm:hardhat-deploy-ethers ethers
+```
 
-Try running some of the following tasks:
-
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+## Import hardhat deploy in `hardhat.config.js`
+```javascript
+require('hardhat-deploy`)
 ```
