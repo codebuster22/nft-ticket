@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // Description: A ticketing infrastructure powered with NFTs
 // to provide transparent, open and trustless system of
 // minting tickets
@@ -36,7 +37,9 @@ contract NFTTicket is ERC721, Ownable {
         ERC721(_name, _symbol)
     {}
 
-    function addNewTier(uint256 _tierPrice, uint256 _tierMaxQuantity) external {
+    function addNewTier
+    (uint256 _tierPrice, uint256 _tierMaxQuantity) 
+    external {
         bytes32 tierId = keccak256(
             abi.encode(msg.data, block.timestamp, tierCounter)
         );
@@ -51,13 +54,15 @@ contract NFTTicket is ERC721, Ownable {
         ticketTiers[tierIdentifier] = tier;
     }
 
-    function mintTicket(uint256 _tierIdentifier, uint256 _quantity)
+    function mintTicket
+    (uint256 _tierIdentifier, uint256 _quantity)
         external
         payable
     {
         Tier memory tier = ticketTiers[_tierIdentifier];
         require(tier.tierId != bytes32(0), "TIER Doesn't Exist");
-        require(tier.tierPrice * _quantity == msg.value, "Send exact funds");
+        require(tier.tierPrice * _quantity == msg.value, 
+        "Send exact funds");
         require(
             tier.mintedSupply + _quantity <= tier.tierMaxQuantity,
             "Exceeds max"
